@@ -1,5 +1,5 @@
 .gridStyle{
-    height: 600px;
+    width: 850px;
 }
 .disabled{
     color: gray;
@@ -15,4 +15,22 @@
 }
 .female{
     background-image: url('../img/glyphicons_004_girl.png');
+}
+#row-details{
+    display: none; 
+    float: right; 
+    width: 500px;
+    border: solid gray thin;
+    margin-right: 50px;
+}
+#row-details span{
+    font-weight: bold;
+    padding: 5px;
+    font-size: 14px;
+}
+.header{
+    background-color: gray;
+    border-bottom: solid lightgray thin;
+    color: white;
+    padding: 10px;
 }

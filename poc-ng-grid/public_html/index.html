@@ -9,17 +9,38 @@
         <title>My Ng-Grid POC App</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/app.css"/>
-        <link rel="stylesheet" href=app/js/ng-grid/ng-grid.css/>
 
+
+        <link rel="stylesheet" href=app/js/ng-grid/ng-grid.css/>
+        <link rel="stylesheet" href="css/app.css"/>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
     </head>
     <body ng-controller="MyCtrl1">
         <div >
             <a id="filter-link" href="" onclick="">Filter Grid</a>
             <input type="text" value="true" ng-model="filterOptions.filterText" id="filter-input"/>
         </div>
+        <div style="" id="row-details">
+            <p class="header"><span>Row details</span></p>
+            <p><span>id</span> {{row.id}}</p>
+            <p><span>guid</span> {{row.guid}}</p>
+            <p><span>Active</span> {{row.isActive}}</p>
+            <p><span>Balance</span> {{row.balance}}</p>
+            <p><span>Picture</span> <img src="{{row.picture}}"/></p>
+            <p><span>Age</span> {{row.age}}</p>
+            <p><span>Eye color</span> {{row.eyeColor}}</p>
+            <p><span>name</span> {{row.name}}</p>
+            <p><span>Gender</span> {{row.gender}}</p>
+            <p><span>Company</span> {{row.company}}</p>
+            <p><span>e-mail</span> <a href="mailto:{{row.email}}">{{row.email}}</a></p>
+            <p><span>Phone</span> <a href="mailto:{{row.email}}">{{row.email}}</a></p>
+            <p><span>Address</span> {{row.address}}</p>
+            <p><span>about</span> {{row.about}}</p>
+            <p><span>Registration</span> {{row.registered}}</p>
+        </div>
         <div class="gridStyle" ng-grid="gridOptions"></div>
-
+        ,
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -33,7 +54,8 @@
         <script src="app/js/angular.js/angular.js"></script>
         <script src="app/js/ng-grid/ng-grid.js"></script>
         <script src="app/js/ng-grid/ng-grid-flexible-height.js"></script>
-        
+        <script src="app/js/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
+
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>

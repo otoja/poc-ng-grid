@@ -2,25 +2,27 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['ngGrid'])
+angular.module('myApp.controllers', ['ngGrid', 'ui.bootstrap'])
         .controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
                 //configure grid
+                $scope.selection=[];
                 $scope.columnDefs=[
-                    {field: 'id', displayName:'ID', width: 30},  
+                    {field: 'id', displayName:'ID', width: 30, visible: false},  
                     {field: 'guid', visible: false},  
-                    {field: 'isActive', visible: false},  
-                    {field: 'balance', displayName:'Balance', width: 80},  
-                    {field: 'picture', displayName:'', width: 40, cellTemplate: 'templates/avatarCellTemplate.html'},  
-                    {field: 'age', displayName:'Age', width: 40},  
-                    {field: 'eyeColor', displayName:'Eye Color'},  
-                    {field: 'name', displayName:'Name'},  
-                    {field: 'gender', displayName:'', width: 32, cellTemplate: 'templates/genderCellTemplate.html'},  
-                    {field: 'company', displayName:'Company', width: 150},                      
-                    {field: 'email', displayName:'Email'},  
-                    {field: 'phone', displayName:'Phone'},  
-                    {field: 'address', displayName:'Address'},  
-                    {field: 'about', displayName:'About'},  
-                    {field: 'registered', displayName:'Registered', width: 150} 
+                    {field: 'isActive', visible: false, }, 
+                    {field: 'balance', displayName:'Balance', visible: false},  
+                    {field: 'eyeColor', displayName:'Eye Color', visible: false}, 
+                    {field: 'about', displayName:'About', visible: false},
+                    {field: 'registered', displayName:'Registered', width: 150, visible: false} ,
+                    {field: 'age', displayName:'Age', width: 40, visible: false},
+                     
+                    {field: 'picture', displayName:'', width: 40, cellTemplate: 'templates/avatarCellTemplate.html'},                    
+                    {field: 'name', displayName:'Name', width: 150},  
+                    {field: 'company', displayName:'Company', width: 150},                                
+                    {field: 'address', displayName:'Address'},
+                    {field: 'gender', displayName:'', width: 32, cellTemplate: 'templates/genderCellTemplate.html'},                                         
+                    {field: 'email', displayName:'', width: 36, cellTemplate: 'templates/mailCellTemplate.html'},  
+                    {field: 'phone', displayName:'', width: 36, cellTemplate: 'templates/phoneCellTemplate.html'}                                         
                 ];
                 $scope.filterOptions = {
                     filterText: ''
@@ -29,7 +31,7 @@ angular.module('myApp.controllers', ['ngGrid'])
                 $scope.pagingOptions = {
                     currentPage: 1,
                     pageSizes: [10, 20, 50, 100, 200],
-                    pageSize: 50
+                    pageSize: 20
                 }
 
                 //pagination functions
@@ -65,15 +67,22 @@ angular.module('myApp.controllers', ['ngGrid'])
                         $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
                     }
                 }, true);
-
+                
+                //row details
+                $scope.showRowDetails=function(row){
+                    $scope.row=row.entity;
+                    angular.element('#row-details').css('display','block');
+                }
 
                 $scope.gridOptions = {
                     primaryKey: 'guid',
                     data: 'myData', //data set
                     columnDefs: $scope.columnDefs,
+                    selectedRows: $scope.selection,
                     
                     //teplates
                     rowTemplate: 'templates/rowTemplate.html',
+//                    footerTemplate: 'templates/footerTemplate.html',
 
                     //selection config
                     highlighting: true,
