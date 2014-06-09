@@ -67,11 +67,22 @@ angular.module('myApp.controllers', ['ngGrid', 'ui.bootstrap'])
                         $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
                     }
                 }, true);
+                $scope.$watch('filterOptions', function(newVal, oldVal) {
+                    if (newVal !== oldVal) {
+                        $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+                    }
+                }, true);
                 
                 //row details
                 $scope.showRowDetails=function(row){
                     $scope.row=row.entity;
                     angular.element('#row-details').css('display','block');
+                }
+                
+                //filter: hide inactive rows
+                $scope.hideInactive=function(){
+                    if ($scope.filterOptions.filterText==='') $scope.filterOptions.filterText='true';
+                    else $scope.filterOptions.filterText='';
                 }
 
                 $scope.gridOptions = {

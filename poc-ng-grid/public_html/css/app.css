@@ -3,6 +3,7 @@
 }
 .disabled{
     color: gray;
+    opacity: 0.5;
 }
 .icon{
     background-repeat: no-repeat;

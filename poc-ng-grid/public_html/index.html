@@ -18,8 +18,8 @@
     </head>
     <body ng-controller="MyCtrl1">
         <div >
-            <a id="filter-link" href="" onclick="">Filter Grid</a>
-            <input type="text" value="true" ng-model="filterOptions.filterText" id="filter-input"/>
+            <a id="filter-link" value="false" href="" ng-click="hideInactive()">Hide / show inactive rows</a>
+            <input type="text" ng-model="filterOptions.filterText" id="filter-input" style="display: none;"/>
         </div>
         <div style="" id="row-details">
             <p class="header"><span>Row details</span></p>
