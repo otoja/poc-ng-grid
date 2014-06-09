@@ -5,6 +5,23 @@
 angular.module('myApp.controllers', ['ngGrid'])
         .controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
                 //configure grid
+                $scope.columnDefs=[
+                    {field: 'id', displayName:'ID', width: 30},  
+                    {field: 'guid', visible: false},  
+                    {field: 'isActive', visible: false},  
+                    {field: 'balance', displayName:'Balance', width: 80},  
+                    {field: 'picture', displayName:'', width: 40, cellTemplate: 'templates/avatarCellTemplate.html'},  
+                    {field: 'age', displayName:'Age', width: 40},  
+                    {field: 'eyeColor', displayName:'Eye Color'},  
+                    {field: 'name', displayName:'Name'},  
+                    {field: 'gender', displayName:'', width: 32, cellTemplate: 'templates/genderCellTemplate.html'},  
+                    {field: 'company', displayName:'Company', width: 150},                      
+                    {field: 'email', displayName:'Email'},  
+                    {field: 'phone', displayName:'Phone'},  
+                    {field: 'address', displayName:'Address'},  
+                    {field: 'about', displayName:'About'},  
+                    {field: 'registered', displayName:'Registered', width: 150} 
+                ];
                 $scope.filterOptions = {
                     filterText: ''
                 };
@@ -53,6 +70,10 @@ angular.module('myApp.controllers', ['ngGrid'])
                 $scope.gridOptions = {
                     primaryKey: 'guid',
                     data: 'myData', //data set
+                    columnDefs: $scope.columnDefs,
+                    
+                    //teplates
+                    rowTemplate: 'templates/rowTemplate.html',
 
                     //selection config
                     highlighting: true,
